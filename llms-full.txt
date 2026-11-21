@@ -1,0 +1,109 @@
+# Google Search URL Reference — Full Content
+
+> 62 parameters. 55 active, 4 legacy, 1 dead, 2 zombie. Verified Nov 2026.
+
+## The Template
+
+{google:baseURL}search?q=%s&{google:RLZ}{google:originalQueryForSuggestion}{google:assistedQueryStats}{google:searchFieldtrialParameter}{google:language}{google:prefetchSource}{google:searchClient}{google:sourceId}{google:contextualSearchVersion}{google:contextualSearchContextData}{google:searchVersion}{google:sessionToken}{google:currentPageUrl}{google:cursorPosition}{google:forceInstantResults}{google:pageClassification}{google:clientCacheTimeToLive}gl=IN&lr=lang_en&num=20&start=0&safe=active&tbs=&tbm=&udm=14&filter=1&nfpr=0&pws=0&cr=countryIN&uule=&ie={inputEncoding}&oe={outputEncoding}&gbv=&kgmid=&ibp=&as_q=&as_epq=&as_oq=&as_eq=&as_dt=&as_filetype=&as_ft=&as_lq=&as_sitesearch=&as_rq=&as_occt=&as_nlo=&as_nhi=&as_qdr=&as_rights=
+
+## 1. Chromium Tokens (18)
+
+| # | Token | Resolves To | Status | Notes |
+|---|-------|-------------|--------|-------|
+| 1 | {google:baseURL} | https://www.google.com/ | active | Always |
+| 2 | {google:RLZ} | &rlz=1C5GGLN_enIN999_999... | active | RLZ cookie |
+| 3 | {google:originalQueryForSuggestion} | &oq=original+terms | active | Autocomplete |
+| 4 | {google:assistedQueryStats} | &aqs=chrome..69i57j69... | legacy | Replaced by gs_lcrp |
+| 5 | {google:searchFieldtrialParameter} | &sfv=v1 | active | A/B flags |
+| 6 | {google:language} | &hl=en | active | Always |
+| 7 | {google:prefetchSource} | &pf=s | active | Prefetch only |
+| 8 | {google:searchClient} | &client=chrome-b-d | active | Client type |
+| 9 | {google:sourceId} | &sourceid=chrome | active | Always |
+| 10 | {google:contextualSearchVersion} | &csv=v2 | active | Feature flag |
+| 11 | {google:contextualSearchContextData} | &csd=... | active | Contextual |
+| 12 | {google:searchVersion} | &sv=... | active | Protocol |
+| 13 | {google:sessionToken} | &st=... | active | Session |
+| 14 | {google:currentPageUrl} | &cpu=... | active | Internal nav |
+| 15 | {google:cursorPosition} | &cp=... | active | Omnibox |
+| 16 | {google:forceInstantResults} | &fir=1 | zombie | Deprecated |
+| 17 | {google:pageClassification} | &pc=... | active | Page hint |
+| 18 | {google:clientCacheTimeToLive} | &ccl=... | active | Cache TTL |
+
+## 2. Standard Tokens (3)
+
+| # | Token | Resolves To | Status |
+|---|-------|-------------|--------|
+| 19 | %s | URL-encoded search terms | active (required) |
+| 20 | {inputEncoding} | UTF-8 | active |
+| 21 | {outputEncoding} | UTF-8 | active |
+
+## 3. Fixed Parameters (18)
+
+| # | Param | Default | Status | Notes |
+|---|-------|---------|--------|-------|
+| 22 | gl | IN | active | ISO 3166-1 alpha-2 |
+| 23 | lr | lang_en | active | ISO 639-1+ |
+| 24 | num | 20 | dead | Disabled Sep 2025 |
+| 25 | start | 0 | active | +10 per page |
+| 26 | safe | active | active | active/off |
+| 27 | tbs | (empty) | active | See sub-values |
+| 28 | tbm | (empty) | legacy | Use udm |
+| 29 | udm | 14 | active | See sub-values |
+| 30 | filter | 1 | active | 1=cluster 0=all |
+| 31 | nfpr | 0 | active | 1=disable autocorrect |
+| 32 | pws | 0 | active | 0=no personalization |
+| 33 | cr | countryIN | active | Host country |
+| 34 | uule | (empty) | active | Geo base64 |
+| 35 | ie | UTF-8 | active | Input encoding |
+| 36 | oe | UTF-8 | active | Output encoding |
+| 37 | gbv | (empty) | active | 1=basic HTML |
+| 38 | kgmid | (empty) | active | /g/... entity |
+| 39 | ibp | (empty) | active | Rendering |
+
+## 4. Advanced Search (15)
+
+| # | Param | Status | Notes |
+|---|-------|--------|-------|
+| 40 | as_q | active | AND words |
+| 41 | as_epq | active | Exact phrase |
+| 42 | as_oq | active | OR words |
+| 43 | as_eq | active | Exclude |
+| 44 | as_dt | active | i/e modifier |
+| 45 | as_filetype | active | pdf/doc/xls |
+| 46 | as_ft | active | i/e modifier |
+| 47 | as_lq | active | Links to |
+| 48 | as_sitesearch | active | Domain |
+| 49 | as_rq | zombie | Non-functional |
+| 50 | as_occt | active | any/title/body/url/links |
+| 51 | as_nlo | active | Number low |
+| 52 | as_nhi | active | Number high |
+| 53 | as_qdr | active | h/d/w/m/y |
+| 54 | as_rights | active | cc_* values |
+
+## 5. Server-Side Tracking (8)
+
+| # | Param | Default | Status | Notes |
+|---|-------|---------|--------|-------|
+| 55 | gs_lcrp | (empty) | active | Protobuf base64 |
+| 56 | gs_rn | 42 | active | Round number |
+| 57 | sei | (empty) | active | Session ID |
+| 58 | ei | (empty) | legacy | Use sei |
+| 59 | sclient | gws-wiz | active | Internal |
+| 60 | sxsrf | (empty) | active | CSRF token |
+| 61 | gs_l | (empty) | legacy | Search bar |
+| 62 | gs_lp | (empty) | legacy | Combined |
+
+## udm Values
+
+14=web, 2=images, 7=videos, 12=news, 18=forums, 28=shopping, 36=books, 39=short videos, 50=AI Mode, 51=homework, 8=jobs, 1=places, 3=products
+
+## tbs Values
+
+qdr:h/d/w/m/y, cdr:1,cd_min:X,cd_max:X, li:1, sbd:1, ift:png/jpg/svg, sz:1, ic:color/gray
+
+## Status Legend
+
+- active: Working as of Nov 2026
+- legacy: Still observed, superseded
+- dead: No longer functional
+- zombie: Present but no effect   
