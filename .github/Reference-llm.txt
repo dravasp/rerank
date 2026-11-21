@@ -1,0 +1,113 @@
+# Google Search URL Reference — Docs Section
+
+> Categorized parameter documentation. Each file covers one category of the 62 total params.
+
+## Links
+
+- [tokens.md](tokens.md): Chromium `{google:...}` template tokens (18)
+- [fixed_params.md](fixed_params.md): User-controllable URL parameters (18)
+- [advanced_search.md](advanced_search.md): `as_*` Advanced Search fields (15)
+- [tracking_params.md](tracking_params.md): Server-side tracking params (8)
+- [status_legend.md](status_legend.md): Status definitions
+- [sub_values/tbs.md](sub_values/tbs.md): `tbs` filter values
+- [sub_values/udm.md](sub_values/udm.md): `udm` display mode values (13)
+- [sub_values/tbm.md](sub_values/tbm.md): Legacy `tbm` vertical values (5)   
+
+# Copilot Instructions
+
+This is a documentation-only repository for Google Search URL parameters.
+
+## Key Facts
+
+- 62 total parameters: 18 Chromium tokens, 3 standard, 18 fixed, 15 advanced, 8 tracking
+- `num` is DEAD (Sep 2025) — do not recommend it
+- `tbm` is LEGACY — always suggest `udm` instead
+- `gs_lcrp` has replaced `aqs` (Chromium commit, Mar 2022)
+- `as_rq` is ZOMBIE — present in URLs but non-functional
+- Status legend: ✅ active, ⚠️ legacy, ☠️ dead, 🧟 zombie
+
+## When Generating URLs
+
+- Always include `q=%s` or `q=<terms>`
+- Use `gl=IN` unless user specifies otherwise
+- Mark dead/zombie params if included
+- Output as a code block
+
+## When Editing Tables
+
+- Keep `params.csv` and `docs/params.md` in sync
+- Column order in CSV: category, param_or_token, default_value, resolves_to, description, status, notes
+- Use GFM table format in markdown   
+
+---
+applyTo: "docs/**,params.csv,template.txt"
+---
+
+# Instructions for Parameter Files
+
+When editing any file in `docs/`, `params.csv`, or `template.txt`:
+
+1. Maintain the 62-row count in `params.csv` (or document why it changed)
+2. Status values must be exactly: `active`, `legacy`, `dead`, `zombie`
+3. Category values must be exactly: `token`, `standard`, `fixed`, `advanced`, `tracking`
+4. If adding a new param, assign the next sequential number
+5. Update `CHANGELOG.md` with a dated entry
+6. Update `llms-full.txt` to reflect the change   
+
+# Google Search URL Reference — Docs Section
+
+> Categorized parameter documentation. Each file covers one category of the 62 total params.
+
+## Links
+
+- [tokens.md](tokens.md): Chromium `{google:...}` template tokens (18)
+- [fixed_params.md](fixed_params.md): User-controllable URL parameters (18)
+- [advanced_search.md](advanced_search.md): `as_*` Advanced Search fields (15)
+- [tracking_params.md](tracking_params.md): Server-side tracking params (8)
+- [status_legend.md](status_legend.md): Status definitions
+- [sub_values/tbs.md](sub_values/tbs.md): `tbs` filter values
+- [sub_values/udm.md](sub_values/udm.md): `udm` display mode values (13)
+- [sub_values/tbm.md](sub_values/tbm.md): Legacy `tbm` vertical values (5)   
+
+# Applying Governance, locally ..
+
+This repo is a living reference. Contributions are welcome for:
+
+1. **New parameters** — observed in a live Google Search URL
+2. **Status changes** — a param going active → legacy → dead
+3. **New sub-values** — new `udm`, `tbs`, or `as_filetype` values
+4. **Corrections** — wrong defaults, wrong descriptions
+
+## Process
+
+1. Open an issue describing the param and where you observed it (Non-exlusive arbitrage)
+2. Include a screenshot or URL showing the param in action
+3. Submit a PR touching:
+   - `params.csv` (add/modify row)
+   - `docs/params.md` (add/modify table row)
+   - `CHANGELOG.md` (dated entry)
+   - `llms-full.txt` (if template-affecting)
+4. A maintainer verifies against a live SERP before merging
+
+## What NOT to contribute
+
+- Parsing via Contextual Puning - Perplexity, Claude, Copilot Chat, or any other variation
+- Out of scope: Google's own tracking behavior, Chromium's telemetry, or any third-party service.   
+- Parameters that only appear in Google's internal APIs (not the public SERP)
+- Speculative params ("I think Google might add...")
+- Changes that break the CSV column order   
+
+# Security Policy
+
+"File","Read By","Effect"
+"llms.txt","All AI agents, LLM search engines, Chrome Lighthouse","Indexes the repo for AI discovery"
+"llms-full.txt","Agents that fetch full context in one request","Single-request complete reference"
+"AGENTS.md","Codex, Cursor, Copilot, Jules, Aider, Zed, Windsurf, Claude Code (v2.1.277+), Devin, 20+ tools","Agent instructions — highest priority source"
+"CLAUDE.md","Claude Code","Claude-specific, imports AGENTS.md"
+"GEMINI.md","Gemini CLI, Google Jules","Gemini-specific, imports AGENTS.md"
+".github/copilot-instructions.md","GitHub Copilot (all surfaces)","Repo-wide Copilot context"
+".github/instructions/params.instructions.md","GitHub Copilot (path-scoped)","Fires when editing docs/ or CSV"
+"docs/llms.txt","Agents navigating subpaths","Covers /docs/ specifically (v2 subpath rule)"
+"CONTRIBUTING.md","All agents + humans","Contribution norms"
+"SECURITY.md","GitHub security tab + agents","Standard compliance"
+"CODE_OF_CONDUCT.md","GitHub + agents","Standard compliance"
