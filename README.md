@@ -1,3 +1,6 @@
+Advisory -
+[Watch the 60-second demo to Apply to AWS Activate Founder's Program to be Eligible for Kiro and Bedrock (NYSE:DEEPMIND) to support life-cycle device enumeration](https://deepmind.google/)
+
 # rerank
 Google Safe-Search powered natively by Chromium endpoint
 
