@@ -1,0 +1,24 @@
+# Google Search URL Reference
+
+> Complete, annotated reference for every parameter in a Google Search URL — 62 params across Chromium tokens, fixed query params, Advanced Search fields, and server-side tracking. Verified Nov 2026.
+
+## Links
+
+- [Full parameter table](docs/params.md): All 62 params with status (active/legacy/dead/zombie), defaults, and notes
+- [Chromium tokens reference](docs/tokens.md): 18 `{google:...}` template tokens with resolution conditions
+- [Fixed URL parameters](docs/fixed_params.md): 18 user-controllable params (gl, lr, udm, tbs, etc.)
+- [Advanced Search parameters](docs/advanced_search.md): 15 `as_*` fields with accepted values
+- [Tracking parameters](docs/tracking_params.md): 8 server-side params (gs_lcrp, sei, gs_rn, etc.)
+- [tbs sub-values](docs/sub_values/tbs.md): Time range, verbatim, sort, image filters
+- [udm sub-values](docs/sub_values/udm.md): 13 display modes (web, images, videos, news, AI Mode, etc.)
+- [tbm sub-values (legacy)](docs/sub_values/tbm.md): Deprecated vertical selectors
+- [Status legend](docs/status_legend.md): Active / Legacy / Dead / Zombie definitions
+- [Raw template](template.txt): Copy-paste Chromium search template (all 54 elements)
+- [Machine-readable CSV](params.csv): 62-row CSV for programmatic use
+- [Working examples](examples/): 6 copy-paste URLs for common use cases
+- [Presets](presets/): 4 named templates for browser settings
+
+## Optional
+
+- [Changelog](CHANGELOG.md): Parameter status changes over time
+- [Security policy](SECURITY.md): Reporting issues
